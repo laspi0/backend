@@ -20,3 +20,17 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/listings/{id}', [ListingController::class, 'destroy']);
     Route::delete('/listing-photos/{id}', [ListingController::class, 'deletePhoto']);
 });
+
+
+use App\Http\Controllers\API\FavoriteController;
+// Routes API pour les favoris
+Route::middleware('auth:sanctum')->group(function () {
+    // Ajouter un favori
+    Route::post('/favorites/{listingId}', [FavoriteController::class, 'store']);
+
+    // Supprimer un favori
+    Route::delete('/favorites/{listingId}', [FavoriteController::class, 'destroy']);
+
+    // Lister les favoris
+    Route::get('/favorites', [FavoriteController::class, 'index']);
+});

@@ -10,7 +10,14 @@ class Listing extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'price', 'measurement', 'type', 'address', 'user_id', 'status'
+        'title',
+        'description',
+        'price',
+        'measurement',
+        'type',
+        'address',
+        'user_id',
+        'status'
     ];
 
     public function user()
@@ -21,5 +28,9 @@ class Listing extends Model
     public function photos()
     {
         return $this->hasMany(ListingPhoto::class);
+    }
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 }

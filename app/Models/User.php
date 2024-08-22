@@ -32,4 +32,9 @@ class User extends Authenticatable
         'birth' => 'date',
         'last_login_at' => 'datetime',
     ];
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
 }
