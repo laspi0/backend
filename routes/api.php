@@ -43,3 +43,17 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/listings/{listing}/comments', [CommentController::class, 'store']);
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy']);
 });
+
+
+
+
+use App\Http\Controllers\API\ConversationController;
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/listings/{listing}/start-conversation', [ConversationController::class, 'startConversation']);
+    Route::post('/conversations/{conversation}/messages', [ConversationController::class, 'sendMessage']);
+    Route::get('/conversations', [ConversationController::class, 'getConversations']);
+    Route::get('/conversations/{conversation}/messages', [ConversationController::class, 'getMessages']);
+    Route::post('/conversations/{conversation}/mark-as-read', [ConversationController::class, 'markAsRead']);
+});
+
+Route::get('/listings/{listing}/check-conversation', [ListingController::class, 'checkConversation'])->middleware('auth:sanctum');

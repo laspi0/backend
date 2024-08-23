@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Listing;
+use App\Models\Conversation;
 use App\Models\ListingPhoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -108,7 +109,7 @@ class ListingController extends Controller
     public function destroy($id)
     {
         $listing = Listing::findOrFail($id);
-        
+
         foreach ($listing->photos as $photo) {
             Storage::disk('public')->delete($photo->path);
             $photo->delete();
@@ -117,6 +118,24 @@ class ListingController extends Controller
         $listing->delete();
 
         return response()->json(['message' => 'Listing deleted successfully']);
+    }
+
+    public function checkConversation(Request $request, $id)
+    {
+        $listing = Listing::findOrFail($id);
+        $user = $request->user();
+
+        $conversation = Conversation::where('listing_id', $listing->id)
+            ->where(function ($query) use ($user) {
+                $query->where('sender_id', $user->id)
+                    ->orWhere('recipient_id', $user->id);
+            })
+            ->first();
+
+        return response()->json([
+            'has_conversation' => $conversation !== null,
+            'conversation_id' => $conversation ? $conversation->id : null,
+        ]);
     }
 
     public function deletePhoto($id)
