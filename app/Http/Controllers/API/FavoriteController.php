@@ -55,7 +55,9 @@ class FavoriteController extends Controller
     public function index()
     {
         $userId = Auth::id();
-        $favorites = Favorite::where('user_id', $userId)->with('listing')->get();
+        $favorites = Favorite::where('user_id', $userId)
+            ->with('listing.photos') // Inclut les photos des articles
+            ->get();
 
         return response()->json($favorites);
     }
