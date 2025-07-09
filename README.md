@@ -1,66 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <a href="https://laravel.com" target="_blank">
+    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+  </a>
 </p>
 
-## About Laravel
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel Badge"/>
+  <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP Badge"/>
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License Badge"/>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Projet API Backend 🚀
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Ce projet est une API RESTful développée avec Laravel. Elle fournit les fonctionnalités de base pour une application de gestion de petites annonces, incluant la gestion des utilisateurs, des annonces, des commentaires, des favoris et des "likes".
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📋 Prérequis
 
-## Learning Laravel
+Assurez-vous que votre environnement de développement dispose des éléments suivants :
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- 🐘 PHP >= 8.1
+- 🎼 Composer
+- 🗄️ Un serveur de base de données (MySQL, PostgreSQL, etc.)
+- 🟢 Node.js & NPM (pour la compilation des assets)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## ⚙️ Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1.  **Clonez le dépôt** 📂
+    ```bash
+    git clone <url-du-depot>
+    cd backend
+    ```
 
-## Laravel Sponsors
+2.  **Installez les dépendances PHP** 📦
+    ```bash
+    composer install
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3.  **Installez les dépendances JavaScript** 📦
+    ```bash
+    npm install
+    ```
 
-### Premium Partners
+4.  **Créez le fichier d'environnement** 🔑
+    Copiez le fichier d'exemple et générez votre clé d'application.
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+5.  **Configurez votre base de données** 💾
+    Modifiez le fichier `.env` avec les informations de connexion à votre base de données (DB_DATABASE, DB_USERNAME, DB_PASSWORD, etc.).
 
-## Contributing
+6.  **Exécutez les migrations** 🏗️
+    Pour créer les tables dans la base de données :
+    ```bash
+    php artisan migrate
+    ```
+    Optionnel : pour peupler la base de données avec des données de test :
+    ```bash
+    php artisan db:seed
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## ▶️ Démarrage du serveur
 
-## Code of Conduct
+Pour lancer le serveur de développement local :
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan serve
+```
 
-## Security Vulnerabilities
+L'API sera accessible à l'adresse `http://127.0.0.1:8000`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🗺️ Endpoints de l'API
 
-## License
+Voici un aperçu des routes principales disponibles :
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 👤 Authentification
+- `POST /api/register` : Créer un nouvel utilisateur.
+- `POST /api/login` : Connecter un utilisateur et obtenir un token.
+- `POST /api/logout` : Déconnecter l'utilisateur (nécessite une authentification).
+
+### 🏡 Annonces (Listings)
+- `GET /api/listings` : Lister toutes les annonces.
+- `GET /api/listings/{id}` : Afficher une annonce spécifique.
+- `POST /api/listings` : Créer une nouvelle annonce (authentifié).
+- `PUT /api/listings/{id}` : Mettre à jour une annonce (authentifié).
+- `DELETE /api/listings/{id}` : Supprimer une annonce (authentifié).
+
+### 💬 Commentaires (Comments)
+- `POST /api/listings/{id}/comments` : Ajouter un commentaire à une annonce (authentifié).
+
+### ⭐ Favoris (Favorites)
+- `POST /api/listings/{id}/favorite` : Mettre une annonce en favori (authentifié).
+
+### 👍 Likes
+- `POST /api/listings/{id}/like` : "Liker" une annonce (authentifié).
+
+## 🧪 Lancer les tests
+
+Pour exécuter la suite de tests automatisés :
+
+```bash
+php artisan test
+```
